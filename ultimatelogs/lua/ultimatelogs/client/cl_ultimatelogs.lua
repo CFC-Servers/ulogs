@@ -43,10 +43,9 @@ ULogs.VersionAdvert = true
 
 ULogs.GetOptions = function()
 	
-	local Data = LocalPlayer():GetPData( "ulogs_hidegm", "[]" ) -- I don't like convars
+	local OptionsData = tostring(LocalPlayer():GetPData( "ulogs_hidegamemode", "[]" )) or "" -- I don't like convars
 	
-	ULogs.HideGM = util.JSONToTable( Data )
-	ULogs.HideGM[ 1 ] = false
+	ULogs.HideGM = util.JSONToTable( OptionsData ) or {}
 	
 end
 
@@ -812,7 +811,7 @@ ULogs.OpenOptionsMenu = function()
 	local BlockOptions = {}
 	for k, v in pairs( ULogs.GMTypes ) do
 		
-		if v.ID == 1 then continue end
+		--if v.ID == 1 then continue end
 		
 		local Button = vgui.Create( "ULogs_DCheckBoxLabel" )
 		Button.ID = v.ID
@@ -823,7 +822,7 @@ ULogs.OpenOptionsMenu = function()
 			Value = !Value
 			ULogs.HideGM[ self.ID ] = tobool( Value )
 			local Data = util.TableToJSON( ULogs.HideGM )
-			LocalPlayer():SetPData( "ulogs_hidegm", Data )
+			LocalPlayer():SetPData( "ulogs_hidegamemode", Data )
 			
 			ULogs.GetOptions()
 			
