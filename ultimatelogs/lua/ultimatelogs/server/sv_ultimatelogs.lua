@@ -174,8 +174,8 @@ ULogs.CheckLimit = function( CallBack )
 			
 			if lines > ULogs.config.Limit then
 				
-				ULogs.Query( "DELETE FROM " .. ULogs.config.TableName .. " WHERE id IN( SELECT id FROM " .. ULogs.config.TableName .. " ORDER BY id ASC LIMIT 1)", function()
-					
+				ULogs.Query( "DELETE FROM " .. ULogs.config.TableName .. " WHERE id IN(SELECT id FROM (SELECT id FROM " .. ULogs.config.TableName .. " ORDER BY `id` ASC LIMIT 1) x)", function()
+			
 					CallBack()
 					return
 					
