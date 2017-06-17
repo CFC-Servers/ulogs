@@ -27,7 +27,6 @@ surface.CreateFont( "ULogs_Page",
 local SearchDefaultText = "Search ALL Logs ..."
 
 ULogs.HideGM = {}
-ULogs.VersionAdvert = true
 
 
 
@@ -105,23 +104,7 @@ end
 
 ULogs.CheckUpdate = function( CurrentVersion )
 	
-	timer.Simple(.5, function()
-		
-		http.Fetch( "https://raw.githubusercontent.com/myrage2000/ulogs/master/VERSION", function( Body )
-			
-			Version = tonumber( Body )
-			
-			if Version != CurrentVersion and ULogs.VersionAdvert then
-				
-				ULogs_Delete_Derma_Query( "A new update is available", "ULogs update", "Remind me next at my next connection", function() ULogs.VersionAdvert = false end, "Ok", function() end, 
-					"Download page", function() gui.OpenURL( "https://facepunch.com/showthread.php?t=1498803" ) end )
-				
-			end
-			
-			
-		end)
-		
-	end)
+	// Workshop branch, no update function is available
 	
 end
 
