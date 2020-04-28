@@ -38,6 +38,7 @@ ULogs.config.CanSee         = {                        -- ULX ranks that can ope
 
 "superadmin",
 "admin",
+"moderator",
 
 }
 
